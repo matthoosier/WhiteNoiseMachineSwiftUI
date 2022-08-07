@@ -48,19 +48,10 @@ struct ContentView: View {
             VStack {
                 Image("WhiteNoiseMachine300x292")
                 HStack {
-                    Button(action: play) {
-                        Image(systemName: "play.fill")
-                            .accessibilityLabel("Play")
+                    Button(action: togglePlayPause) {
+                        Image(systemName: playing ? "pause.fill" : "play.fill")
+                            .accessibilityLabel(playing ? "Pause" : "Play")
                     }
-                    .disabled(playing)
-                    .padding()
-                    //.border(.blue)
-                    Button(action: pause) {
-                        Image(systemName: "pause.fill")
-                            .accessibilityLabel("Pause")
-                    }
-                    .disabled(!playing)
-                    .padding()
                 }
                 .font(.largeTitle.weight(.black))
                 // Force the button-bar to sop up any extra width or height
@@ -90,17 +81,16 @@ struct ContentView: View {
         })
     }
     
-    
-    func play() {
-        print("Play!")
-        playerProvider.player.play()
-        playing = true
-    }
-    
-    func pause() {
-        print("Pause!")
-        playerProvider.player.pause()
-        playing = false
+    func togglePlayPause() {
+        if (playing) {
+            print("Pause!")
+            playerProvider.player.pause()
+            playing = false
+        } else {
+            print("Play!")
+            playerProvider.player.play()
+            playing = true
+        }
     }
 
 }
