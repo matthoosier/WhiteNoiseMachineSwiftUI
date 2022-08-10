@@ -15,7 +15,7 @@ struct WhiteNoiseMachineSwiftUIApp: App {
             ContentView()
         }
         // Don't want the New Window and Close menu items. These don't really
-        // make sense for this application, because it don't manage documents.
+        // make sense for this application, because it doesn't manage documents.
         .commands {
             // New Window
             CommandGroup(replacing: CommandGroupPlacement.newItem) {

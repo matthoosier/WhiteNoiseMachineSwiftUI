@@ -51,7 +51,7 @@ struct ContentView: View {
                     Button(action: togglePlayPause) {
                         Image(systemName: playing ? "pause.fill" : "play.fill")
                             .accessibilityLabel(playing ? "Pause" : "Play")
-                    }
+                    }.keyboardShortcut(" ", modifiers: [])
                 }
                 .font(.largeTitle.weight(.black))
                 // Force the button-bar to sop up any extra width or height
