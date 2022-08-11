@@ -33,7 +33,7 @@ struct ContentView: View {
 
     var playerProvider = PlayerProvider()
     
-    @State var playing = false
+    @Binding var playing: Bool
     
     var body: some View {
         ZStack {
@@ -96,7 +96,10 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
+    @State static var playing = false
+    
     static var previews: some View {
-        ContentView()
+        ContentView(playing: $playing)
     }
 }
