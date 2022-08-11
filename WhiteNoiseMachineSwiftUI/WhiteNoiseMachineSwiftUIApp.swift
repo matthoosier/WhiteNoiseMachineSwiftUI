@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct WhiteNoiseMachineSwiftUIApp: App {
     
+    @State var playerProvider = PlayerProvider()
     @State var playing = false
     
     var body: some Scene {
         WindowGroup {
-            ContentView(playing: $playing)
+            ContentView(playerProvider: $playerProvider, playing: $playing)
         }
         // Don't want the New Window and Close menu items. These don't really
         // make sense for this application, because it doesn't manage documents.
@@ -29,6 +30,7 @@ struct WhiteNoiseMachineSwiftUIApp: App {
             }
             CommandMenu("Controls") {
                 Button(playing ? "Pause" : "Play") {
+                    playing.toggle()
                 }.keyboardShortcut(.space, modifiers: [])
             }
         }

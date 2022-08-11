@@ -31,7 +31,7 @@ extension View {
 
 struct ContentView: View {
 
-    var playerProvider = PlayerProvider()
+    @Binding var playerProvider: PlayerProvider
     
     @Binding var playing: Bool
     
@@ -48,10 +48,10 @@ struct ContentView: View {
             VStack {
                 Image("WhiteNoiseMachine300x292")
                 HStack {
-                    Button(action: togglePlayPause) {
+                    Button(action: togglePlaying) {
                         Image(systemName: playing ? "pause.fill" : "play.fill")
                             .accessibilityLabel(playing ? "Pause" : "Play")
-                    }.keyboardShortcut(" ", modifiers: [])
+                    }
                 }
                 .font(.largeTitle.weight(.black))
                 // Force the button-bar to sop up any extra width or height
@@ -79,18 +79,27 @@ struct ContentView: View {
                 miniaturizeButton.isHidden = false
             }
         })
+        .onChange(of: playing) {
+            newValue in
+            if (newValue) {
+                play()
+            }
+            else {
+                pause()
+            }
+        }
     }
     
-    func togglePlayPause() {
-        if (playing) {
-            print("Pause!")
-            playerProvider.player.pause()
-            playing = false
-        } else {
-            print("Play!")
-            playerProvider.player.play()
-            playing = true
-        }
+    func togglePlaying() {
+        playing.toggle()
+    }
+    
+    func play() {
+        playerProvider.player.play()
+    }
+    
+    func pause() {
+        playerProvider.player.pause()
     }
 
 }
@@ -98,8 +107,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     
     @State static var playing = false
+    @State static var playerProvider = PlayerProvider()
     
     static var previews: some View {
-        ContentView(playing: $playing)
+        ContentView(playerProvider: $playerProvider, playing: $playing)
     }
 }
