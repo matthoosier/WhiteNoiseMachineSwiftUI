@@ -40,13 +40,13 @@ struct ContentView: View {
             // The big image has on opaque white background, so we'll put
             // a flood-fill of white behind everything else just to match.
             Rectangle()
-                .foregroundColor(.white)
+                .foregroundColor(.clear)
                 // Force this rectangle to expand to the size of its
                 // parent, which will be determined by the VStack below.
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-
             VStack {
                 Image("WhiteNoiseMachine300x292")
+                    .padding()
                 HStack {
                     Button(action: togglePlaying) {
                         Image(systemName: playing ? "pause.fill" : "play.fill")
