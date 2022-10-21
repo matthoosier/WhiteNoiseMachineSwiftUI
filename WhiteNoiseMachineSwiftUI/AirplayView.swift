@@ -24,6 +24,26 @@ struct AirplayView_Previews: PreviewProvider {
     }
 }
 
+#if canImport(UIKit)
+struct AirPlayView : UIViewRepresentable {
+    typealias UIViewType = AVRoutePickerView
+
+    var player: AVPlayer
+    
+    init(player: AVPlayer) {
+        self.player = player
+    }
+    
+    func makeUIView(context: Context) -> AVRoutePickerView {
+        let picker = AVRoutePickerView()
+        return picker
+    }
+    
+    func updateUIView(_ uiView: AVRoutePickerView, context: Context) {
+    }
+    
+}
+#else
 struct AirPlayView : NSViewRepresentable {
 
     var player: AVPlayer
@@ -41,3 +61,4 @@ struct AirPlayView : NSViewRepresentable {
     func updateNSView(_ nsView: NSView, context: Context) {
     }
 }
+#endif

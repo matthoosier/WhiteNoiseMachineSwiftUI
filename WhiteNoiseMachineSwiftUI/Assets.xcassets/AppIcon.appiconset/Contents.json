@@ -1,6 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "WhiteNoiseMachineIcon1024x1024.jpg_20-01-52-037-removebg-preview.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"

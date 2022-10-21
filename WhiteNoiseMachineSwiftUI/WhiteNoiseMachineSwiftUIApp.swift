@@ -10,6 +10,10 @@ import SwiftUI
 @main
 struct WhiteNoiseMachineSwiftUIApp: App {
     
+#if canImport(UIKit)
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+#endif
+    
     @State var playerProvider = PlayerProvider()
     @State var playing = false
     

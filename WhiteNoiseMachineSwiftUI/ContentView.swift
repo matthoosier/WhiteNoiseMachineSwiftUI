@@ -61,6 +61,7 @@ struct ContentView: View {
                 .addAirplayView(player: playerProvider.player)
             }
         }
+#if os(macOS)
         .fixedSize()
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification), perform: { _ in
             
@@ -79,6 +80,7 @@ struct ContentView: View {
                 miniaturizeButton.isHidden = false
             }
         })
+#endif
         .onChange(of: playing) {
             newValue in
             if (newValue) {

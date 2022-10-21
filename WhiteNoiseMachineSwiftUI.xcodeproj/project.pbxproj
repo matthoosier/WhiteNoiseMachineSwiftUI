@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C96589272901FF510011CA86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96589262901FF510011CA86 /* AppDelegate.swift */; };
 		C9E8232A27EF6729003A5771 /* WhiteNoiseMachineSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E8232927EF6729003A5771 /* WhiteNoiseMachineSwiftUIApp.swift */; };
 		C9E8232C27EF6729003A5771 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E8232B27EF6729003A5771 /* ContentView.swift */; };
 		C9E8232E27EF672A003A5771 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E8232D27EF672A003A5771 /* Assets.xcassets */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C96589252901FD4B0011CA86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C96589262901FF510011CA86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E8232627EF6729003A5771 /* WhiteNoiseMachineSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhiteNoiseMachineSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E8232927EF6729003A5771 /* WhiteNoiseMachineSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNoiseMachineSwiftUIApp.swift; sourceTree = "<group>"; };
 		C9E8232B27EF6729003A5771 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,7 +63,9 @@
 		C9E8232827EF6729003A5771 /* WhiteNoiseMachineSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				C96589252901FD4B0011CA86 /* Info.plist */,
 				C9E8232927EF6729003A5771 /* WhiteNoiseMachineSwiftUIApp.swift */,
+				C96589262901FF510011CA86 /* AppDelegate.swift */,
 				C9E8232B27EF6729003A5771 /* ContentView.swift */,
 				C9F617E127F214D400DEAA18 /* PlayerProvider.swift */,
 				C9E8233827EF70B6003A5771 /* AirplayView.swift */,
@@ -156,6 +161,7 @@
 				C9E8232C27EF6729003A5771 /* ContentView.swift in Sources */,
 				C9E8233927EF70B6003A5771 /* AirplayView.swift in Sources */,
 				C9E8232A27EF6729003A5771 /* WhiteNoiseMachineSwiftUIApp.swift in Sources */,
+				C96589272901FF510011CA86 /* AppDelegate.swift in Sources */,
 				C9F617E227F214D400DEAA18 /* PlayerProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +220,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -269,7 +276,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -283,15 +291,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = WhiteNoiseMachineSwiftUI/WhiteNoiseMachineSwiftUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhiteNoiseMachineSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 94ZNYC5RV9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhiteNoiseMachineSwiftUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "White Noise Machine";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -300,8 +314,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthoosier.WhiteNoiseMachineSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -310,15 +328,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = WhiteNoiseMachineSwiftUI/WhiteNoiseMachineSwiftUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhiteNoiseMachineSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 94ZNYC5RV9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhiteNoiseMachineSwiftUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "White Noise Machine";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -327,8 +351,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthoosier.WhiteNoiseMachineSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
