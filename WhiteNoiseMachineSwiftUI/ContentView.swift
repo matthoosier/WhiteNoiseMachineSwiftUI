@@ -61,8 +61,8 @@ struct ContentView: View {
                 .addAirplayView(player: playerProvider.player)
             }
         }
-#if os(macOS)
         .fixedSize()
+#if os(macOS)
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification), perform: { _ in
             
             if let zoomButton = NSApp.mainWindow?.standardWindowButton(.zoomButton) {
