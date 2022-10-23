@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import MediaPlayer
 
 extension View {
     func addVerifiedBadge(_ isVerified: Bool) -> some View {
@@ -90,8 +91,14 @@ struct ContentView: View {
                 pause()
             }
         }
+        .onAppear {
+            setupRemoteTransportProtocols()
+        }
+        .onDisappear {
+            removeRemoteTransportProtocols()
+        }
     }
-    
+
     func togglePlaying() {
         playing.toggle()
     }
@@ -104,6 +111,20 @@ struct ContentView: View {
         playerProvider.player.pause()
     }
 
+    func setupRemoteTransportProtocols() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.togglePlayPauseCommand.addTarget(handler: handleCommandCenterToggle)
+    }
+
+    func removeRemoteTransportProtocols() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.togglePlayPauseCommand.removeTarget(handleCommandCenterToggle)
+    }
+
+    func handleCommandCenterToggle(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        togglePlaying()
+        return .success
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
