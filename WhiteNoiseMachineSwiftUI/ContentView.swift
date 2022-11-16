@@ -86,9 +86,17 @@ struct ContentView: View {
             newValue in
             if (newValue) {
                 play()
+#if os(macOS)
+                // See https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfocenter/2588243-playbackstate
+                MPNowPlayingInfoCenter.default().playbackState = .playing
+#endif
             }
             else {
                 pause()
+#if os(macOS)
+                // See https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfocenter/2588243-playbackstate
+                MPNowPlayingInfoCenter.default().playbackState = .paused
+#endif
             }
         }
         .onAppear {
@@ -113,16 +121,25 @@ struct ContentView: View {
 
     func setupRemoteTransportProtocols() {
         let commandCenter = MPRemoteCommandCenter.shared()
-        commandCenter.togglePlayPauseCommand.addTarget(handler: handleCommandCenterToggle)
+        commandCenter.playCommand.addTarget(handler: handleCommandCenterPlayCommand)
+        commandCenter.pauseCommand.addTarget(handler: handleCommandCenterPauseCommand)
     }
 
     func removeRemoteTransportProtocols() {
         let commandCenter = MPRemoteCommandCenter.shared()
-        commandCenter.togglePlayPauseCommand.removeTarget(handleCommandCenterToggle)
+        commandCenter.playCommand.removeTarget(handleCommandCenterPlayCommand)
+        commandCenter.pauseCommand.removeTarget(handleCommandCenterPauseCommand)
     }
-
-    func handleCommandCenterToggle(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
-        togglePlaying()
+    
+    func handleCommandCenterPlayCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        // property-change handlers will do the heavy work
+        playing = true
+        return .success
+    }
+    
+    func handleCommandCenterPauseCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        // property-change handlers will do the heavy work
+        playing = false
         return .success
     }
 }
